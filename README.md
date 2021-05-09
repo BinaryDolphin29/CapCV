@@ -3,7 +3,7 @@ If you want to get the camera's RGB, BGR such values,, but you don't need other 
 This library is a wrote by begginer.　So may not be stable.  
   
 # Using
-Golang (include **cgo**, **unsafe**), C++  
+Golang (only include **cgo**, **unsafe**), C++  
 OpenCV V4.2.0
 
 # Functions
@@ -18,3 +18,5 @@ OpenCV V4.2.0
 - Read
 - Set
 - Get
+  
+For more information for this library, please see documentation.
