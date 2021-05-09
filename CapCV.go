@@ -1,6 +1,7 @@
 package CapCV
 
 // If you use windows, You need to changing ↓this path(CPPFLAGS, LDFLAGS).
+
 // #cgo !linux CPPFLAGS: -IC:/opencv/build/install/include
 // #cgo !linux LDFLAGS: -LC:/opencv/build/install/x64/vc16/lib -lopencv_core -lopencv_videoio -lopencv_imgproc
 // #cgo CPPFLAGS: -I/usr/local/include/opencv4/
