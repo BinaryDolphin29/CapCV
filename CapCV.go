@@ -6,9 +6,7 @@ package CapCV
 // #cgo CPPFLAGS: -I/usr/local/include/opencv4/
 // #cgo LDFLAGS: -L/usr/local/lib/ -lopencv_core -lopencv_videoio -lopencv_imgproc
 // #include "cv.hpp"
-import (
-	"C"
-)
+import "C"
 import (
 	"unsafe"
 )
