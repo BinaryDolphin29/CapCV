@@ -23,9 +23,8 @@ type VideoCapture struct {
 }
 
 // NewMat Create cv::Mat.
-func (m *Mat) NewMat() *Mat {
-	m.mat = C.NewMat()
-	return m
+func NewMat() *Mat {
+	return &Mat{C.NewMat()}
 }
 
 // IsEmpty Whether the Mat is empty.
@@ -55,8 +54,7 @@ func (m *Mat) CvtColor(dst *Mat, code, channel int) {
 
 // OpenCaptureDevice Open the Capture Device. You will need to check whether the camera is opened.
 func (dev *VideoCapture) OpenCaptureDevice(index int) *VideoCapture {
-	dev.vcd = C.OpenCaptureDev(C.int(index))
-	return dev
+	return &VideoCapture{C.OpenCaptureDev(C.int(index))}
 }
 
 // IsOpenedCaptureDevice Whether the is opened Capture Device.
