@@ -29,7 +29,8 @@ func NewMat() *Mat {
 
 // IsEmpty Whether the Mat is empty.
 func (m *Mat) IsEmpty() bool {
-	return *(*bool)(unsafe.Pointer(uintptr(C.isEmpty(m.mat))))
+	ptr := C.isEmpty(m.mat)
+	return *(*bool)(unsafe.Pointer(&ptr))
 }
 
 // GetPix Get one Pixel values from Mat.
@@ -59,17 +60,20 @@ func OpenCaptureDevice(index int) *VideoCapture {
 
 // IsOpenedCaptureDevice Whether the is opened Capture Device.
 func (dev *VideoCapture) IsOpenedCaptureDevice() bool {
-	return *(*bool)(unsafe.Pointer(uintptr(C.isOpenedCapDev(dev.vcd))))
+	ptr := C.isOpenedCapDev(dev.vcd)
+	return *(*bool)(unsafe.Pointer(&ptr))
 }
 
 // Read Read frame to the Mat.
 func (dev *VideoCapture) Read(m *Mat) bool {
-	return *(*bool)(unsafe.Pointer(uintptr(C.Read(dev.vcd, m.mat))))
+	ptr := C.Read(dev.vcd, m.mat)
+	return *(*bool)(unsafe.Pointer(&ptr))
 }
 
 // Set Set property to the Capture Device. You will need warning to incompatible device properties.
 func (dev *VideoCapture) Set(p VidCapProp, v float64) bool {
-	return *(*bool)(unsafe.Pointer(uintptr(C.DevSet(dev.vcd, C.int(p), C.double(v)))))
+	ptr := C.DevSet(dev.vcd, C.int(p), C.double(v))
+	return *(*bool)(unsafe.Pointer(&ptr))
 }
 
 // Get Get the Capture Device's value.
