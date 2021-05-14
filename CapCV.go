@@ -53,7 +53,7 @@ func (m *Mat) CvtColor(dst *Mat, code, channel int) {
 }
 
 // OpenCaptureDevice Open the Capture Device. You will need to check whether the camera is opened.
-func (dev *VideoCapture) OpenCaptureDevice(index int) *VideoCapture {
+func OpenCaptureDevice(index int) *VideoCapture {
 	return &VideoCapture{C.OpenCaptureDev(C.int(index))}
 }
 
