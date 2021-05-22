@@ -59,7 +59,7 @@ func (m *Mat) RawPtr() C.V3b {
 }
 
 // CvtColor Convert the Mat color.
-func CvtColor(dst, src *Mat, code Type, channel int) {
+func CvtColor(src, dst *Mat, code ColorCvtCodes, channel int) {
 	C.cvtColor(src.mat, dst.mat, C.int(code), C.int(channel))
 }
 
