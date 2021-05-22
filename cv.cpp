@@ -11,6 +11,10 @@ int isEmpty(const Mat m) {
     return m->empty();
 }
 
+int type_(Mat m) {
+    return m->type();
+}
+
 void cvtColor(Mat src, Mat dst, int code, int chan) {
     cv::cvtColor(*src, *dst, code, chan);
 }
@@ -44,4 +48,12 @@ double DevGet(Dev d, int propID) {
 
 int Read(Dev c, Mat m) {
     return c->read(*m);
+}
+
+void MatRelease(Mat m) {
+    m->release();
+}
+
+void DevRelease(Dev d) {
+    d->release();
 }

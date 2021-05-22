@@ -27,10 +27,20 @@ func NewMat() *Mat {
 	return &Mat{C.NewMat()}
 }
 
+// Release Close the Mat.
+func (m *Mat) Release() {
+	C.MatRelease(m.mat)
+}
+
 // IsEmpty Whether the Mat is empty.
 func (m *Mat) IsEmpty() bool {
 	ptr := C.isEmpty(m.mat)
 	return *(*bool)(unsafe.Pointer(&ptr))
+}
+
+func (m *Mat) Type() Type {
+	ptr := C.type_(m.mat)
+	return *(*Type)(unsafe.Pointer(&ptr))
 }
 
 // GetPix Get one Pixel values from Mat.
@@ -49,13 +59,18 @@ func (m *Mat) RawPtr() C.V3b {
 }
 
 // CvtColor Convert the Mat color.
-func (m *Mat) CvtColor(dst *Mat, code, channel int) {
-	C.cvtColor(m.mat, dst.mat, C.int(code), C.int(channel))
+func CvtColor(dst, src *Mat, code Type, channel int) {
+	C.cvtColor(src.mat, dst.mat, C.int(code), C.int(channel))
 }
 
 // OpenCaptureDevice Open the Capture Device. You will need to check whether the camera is opened.
 func OpenCaptureDevice(index int) *VideoCapture {
 	return &VideoCapture{C.OpenCaptureDev(C.int(index))}
+}
+
+// Release Close the CaptureDevice.
+func (dev *VideoCapture) Release() {
+	C.DevRelease(dev.vcd)
 }
 
 // IsOpenedCaptureDevice Whether the is opened Capture Device.

@@ -14,6 +14,7 @@ extern "C" {
 
     Mat NewMat();
     int isEmpty(Mat);
+    int type_(Mat);
     void cvtColor(Mat, Mat, int, int);
     V3b Ptr(Mat);
     V3b GetPix(Mat, int, int);
@@ -22,6 +23,8 @@ extern "C" {
     int DevSet(Dev, int, double);
     double DevGet(Dev, int);
     int Read(Dev, Mat);
+    void MatRelease(Mat);
+    void DevRelease(Dev);
 
 #ifdef __cplusplus
 }
